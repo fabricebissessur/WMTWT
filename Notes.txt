@@ -1,0 +1,13 @@
+Movies Source : https://www.themoviedb.org/
+
+Account:
+	fabriceb
+	fabricebissessur@gimail.com
+	Access_1
+
+API Autho.:
+	API Key (v3 auth) : 89bf4a8b688cd3ae5e0932562b79234d
+	API Read Access Token (v4 auth) : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OWJmNGE4YjY4OGNkM2FlNWUwOTMyNTYyYjc5MjM0ZCIsInN1YiI6IjVjYjQxODkxMGUwYTI2NzdkMWMwZjM5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ioGkEAO3J8IwWaLCJJZ60PwI32ehzynhWaJ6ALqEKic
+	Example API Request : https://api.themoviedb.org/3/movie/550?api_key=89bf4a8b688cd3ae5e0932562b79234d
+
+	Example API Request : https://api.themoviedb.org/3/trending/all/week?api_key=89bf4a8b688cd3ae5e0932562b79234d

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>What Movie To Watch Today</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div id="container">
+        <div id=" header">
+            <h2>What Movie To Watch Today</h2>
+        </div>
+        <div id="content">
+            <div id="verticalFilter">
+                <b>Filter by year</b>
+                <ul>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                    <li>2019</li>
+                </ul>
+            </div>
+            <div id="main">
+                <table>
+                    {% for movie in movies %}
+                    <tr>
+                        <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
+                        <td>{{ movie.original_title }}</td>
+                        <td rowspan="3">{{ movie.vote_average }}</td>
+                        <td rowspan="3">Watched?</td>
+                    </tr>
+                    <tr>
+                        <td>{{ movie.release_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ movie.overview }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div id="footer">
+                Footer - bla bla bla
+            </div>
+        </div>
+    </div>
+</body>
+</html>
