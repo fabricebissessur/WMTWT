@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>What Movie To Watch Today</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="{{url_for('static', filename='img/UnderConstruction.jpg')}}" height="100"> What Movie To Watch Today
+        </div>
+        <div id="horizontalFilters">
+            <form action="/action_page.php">
+                <input type="search" class="searchInput" name="search" placeholder="What Movie To Watch Today ?"><input type="submit" value="Search" class="searchButton">
+            </form>
+        </div>
+        <div id="content">
+            <div id="verticalFilter">
+                <!--Note: jinja2 counter madness. We are using SET which is an assignment operator. Since you call set in the nested loop, the count in the nested loop is a different variable-->
+                <!--That's why we need the hacky solution below where the counter becomes an object instead of a simple variable -->
+                <h2>Refine... </h2>
+                {% set yearFrom = 1899 %}
+                {% set yearTo = 2019 %}
+                {% set count = {'value': yearTo} %}
+                <form action="{{ url_for('results') }}" method="POST">
+                    <p>Year: </p>
+                    <select class="years" name="years">
+                        <option value="any">Any</option>
+                        {% for x in range (yearFrom, yearTo) %}
+                        <option value="{{count.value}}">{{count.value}}</option>
+                        {% if count.update({'value': (count.value - 1)}) %} {% endif %}
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <p>Rating: </p>
+                    <select class="rating" name="rating">
+                        <option value="any">Any</option>
+                        <option value="10">10</option>
+                        <option value="9">9 and above</option>
+                        <option value="8">8 and above</option>
+                        <option value="7">7 and above</option>
+                        <option value="6">6 and above</option>
+                        <option value="5">5 and above</option>
+                        <option value="4">4 and above</option>
+                        <option value="3">3 and above</option>
+                        <option value="2">2 and above</option>
+                        <option value="1">1 and above</option>
+                    </select>
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" class="submitButton" />
+                    
+                </form>
+            </div>
+
+            {% block content %}
+
+            {% endblock %}
+
+            <div id="footer">
+                Footer - bla bla bla
+            </div>
+
+            <img src="D:\CodeRepo\WMTWT\WMTWT\img\UnderConstruction.jpg"> What Movie To Watch Today
+
+        </div>
+    </div>
+</body>
+</html>

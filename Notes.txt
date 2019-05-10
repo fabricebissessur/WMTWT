@@ -11,3 +11,7 @@ API Autho.:
 	Example API Request : https://api.themoviedb.org/3/movie/550?api_key=89bf4a8b688cd3ae5e0932562b79234d
 
 	Example API Request : https://api.themoviedb.org/3/trending/all/week?api_key=89bf4a8b688cd3ae5e0932562b79234d
+
+
+Discover:
+by year : https://api.themoviedb.org/3/discover/movie?api_key=89bf4a8b688cd3ae5e0932562b79234d&primary_release_year=2000

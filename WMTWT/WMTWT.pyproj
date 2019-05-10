@@ -33,9 +33,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="static\img\UnderConstruction.jpg" />
     <Content Include="requirements.txt" />
+    <Content Include="templates\base.html" />
     <Content Include="templates\index.html" />
     <Content Include="static\css\style.css" />
+    <Content Include="templates\results.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -49,6 +52,7 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="static\img\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="templates\" />
