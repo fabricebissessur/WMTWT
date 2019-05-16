@@ -139,6 +139,9 @@ body {
 
 .movie_rating {
     font: 16px 'Source Sans', sans-serif;
+    background-color: #1c1c1c;
+    color: #53d68c;
+    padding: 10px;
 }
 
 .watched {
@@ -147,4 +150,6 @@ body {
 
 #footer {
     clear: both;
+    padding: 20px;
+    background-color: #1c1c1c;
 }

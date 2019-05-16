@@ -2,23 +2,11 @@
 
 {% block content %}
 
-<div id="main">
-    <table>
-        {% for movie in movies %}
-        <tr>
-            <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
-            <td>{{ movie.original_title }}</td>
-            <td rowspan="3">{{ movie.vote_average }}</td>
-            <td rowspan="3">Watched?</td>
-        </tr>
-        <tr>
-            <td>{{ movie.release_date }}</td>
-        </tr>
-        <tr>
-            <td>{{ movie.overview }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+{{ selectedYear }} - {{ selectedRating }}
+
+<form name="pages" method="get" action="{{ url_for('results', page_num="4") }}">
+    <input type="submit" id="previous" name="previous" value="Previous" />
+    <input type="submit" id="next" name="next" value="Next" />
+</form>
 
 {% endblock %}

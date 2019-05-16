@@ -45,38 +45,44 @@ def index():
 
 
 # Server - Display list or movies resulted from the filters added by the user
-@app.route('/results', methods=['POST'])
-def results():
+@app.route('/results/<page_num>', methods=['POST', 'GET'])
+def results(page_num):
+
+    # build the URL initially
+    basePath = "https://api.themoviedb.org/3/"
+    requesType = "discover/"
+    mediaType = "movie"
+    apiKey = "89bf4a8b688cd3ae5e0932562b79234d"
+
+    url = basePath + requesType + mediaType + '?api_key=' + apiKey + "&page=" + str(page_num)
+
+    # fetch selected values sent by the user through the POST method
+    year = request.form['years']
+    rating = request.form['rating']
+
+    # complete the URL base on added filters
+    if year != "any":
+        url = url + "&primary_release_year=" + year
+    if rating != "any":
+        url = url + "&vote_average.gte=" + rating
+
+    print ("Year Selection: " + year)
+    print ("Rating Selection: " + rating)
+    print (url)
+
+    # Fetch results for given URL
+    r = requests.get(url)
+    data = r.json()
+    movies = data['results']
+
     # Filters should come through the POST method
     if request.method == 'POST':
+      
+        # Render the page
+        return render_template('results.html', movies = movies, posterBasePath = getPosterBasePath(), poster_size = "w92", selectedYear=int(year), selectedRating=rating)
 
-        # build the URL initially
-        basePath = "https://api.themoviedb.org/3/"
-        requesType = "discover/"
-        mediaType = "movie"
-        apiKey = "89bf4a8b688cd3ae5e0932562b79234d"
+    elif request.method == 'GET':
 
-        url = basePath + requesType + mediaType + '?api_key=' + apiKey
-
-        # fetch selected values sent by the user through the POST method
-        year = request.form['years']
-        rating = request.form['rating']
-
-        # complete the URL base on added filters
-        if year != "any":
-            url = url + "&primary_release_year=" + year
-        if rating != "any":
-            url = url + "&vote_average.gte=" + rating
-
-        print ("Year Selection: " + year)
-        print ("Rating Selection: " + rating)
-        print (url)
-
-        # Fetch results for given URL
-        r = requests.get(url)
-        data = r.json()
-        movies = data['results']
-        
         # Render the page
         return render_template('results.html', movies = movies, posterBasePath = getPosterBasePath(), poster_size = "w92")
 

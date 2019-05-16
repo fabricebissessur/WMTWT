@@ -24,12 +24,12 @@
                 {% set yearFrom = 1899 %}
                 {% set yearTo = 2019 %}
                 {% set count = {'value': yearTo} %}
-                <form action="{{ url_for('results') }}" method="POST">
+                <form action="{{ url_for('results', page_num="1") }}" method="POST">
                     <p>Year: </p>
-                    <select class="years" name="years">
-                        <option value="any">Any</option>
+                    <select class="years" name="years" id="years">
+                        <option value="any" selected>Any</option>
                         {% for x in range (yearFrom, yearTo) %}
-                        <option value="{{count.value}}">{{count.value}}</option>
+                        <option value="{{count.value}}" {% if count.value==selectedYear %} selected {% endif %}>{{count.value}}</option>
                         {% if count.update({'value': (count.value - 1)}) %} {% endif %}
                         {% endfor %}
                     </select>
@@ -51,19 +51,37 @@
                     <br>
                     <br>
                     <input type="submit" value="Submit" class="submitButton" />
-                    
+
                 </form>
             </div>
 
-            {% block content %}
+            <div id="main">
 
-            {% endblock %}
+                {% block content %}
 
-            <div id="footer">
-                Footer - bla bla bla
+                {% endblock %}
+
+                <table>
+                    {% for movie in movies %}
+                    <tr>
+                        <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
+                        <td class="movie_title">{{ movie.original_title }}</td>
+                        <td class="movie_rating" rowspan="3">{{ movie.vote_average }}</td>
+                        <td class="watched" rowspan="3">Watched?</td>
+                    </tr>
+                    <tr>
+                        <td class="movie_release_date">{{ movie.release_date }}</tdclass="movie_title">
+                    </tr>
+                    <tr>
+                        <td class="movie_overview">{{ movie.overview }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
 
-            <img src="D:\CodeRepo\WMTWT\WMTWT\img\UnderConstruction.jpg"> What Movie To Watch Today
+            <div id="footer">
+                Copyright &copy; 2019 FBI Enterprise - Except as permitted by the copyright law applicable to you, you may not reproduce or communicate any of the content on this website, including files downloadable from this website, without the permission of the copyright owner. For more information, see www.copyright.com.au and www.copyright.org.au.
+            </div>
 
         </div>
     </div>

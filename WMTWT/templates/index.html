@@ -2,23 +2,5 @@
 
 {% block content %}
 
-<div id="main">
-    <table>
-        {% for movie in movies %}
-        <tr>
-            <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
-            <td class="movie_title">{{ movie.original_title }}</td>
-            <td class="movie_rating" rowspan="3">{{ movie.vote_average }}</td>
-            <td class="watched" rowspan="3">Watched?</td>
-        </tr>
-        <tr>
-            <td class="movie_release_date">{{ movie.release_date }}</tdclass="movie_title">
-        </tr>
-        <tr>
-            <td class="movie_overview">{{ movie.overview }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
 
 {% endblock %}
