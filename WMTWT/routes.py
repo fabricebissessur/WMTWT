@@ -62,12 +62,16 @@ def results(page_num):
 
     # complete the URL base on added filters
     if year != "any":
-        url = url + "&primary_release_year=" + year
+        # casting year as integer in case it is not "any". The the drop down menu in the html page evaluates year as an integer.
+        year = int(year)
+        url = url + "&primary_release_year=" + str(year)
     if rating != "any":
-        url = url + "&vote_average.gte=" + rating
+        # casting rating as integer in case it is not "any". The the drop down menu in the html page evaluates rating as an integer.
+        rating = int(rating)
+        url = url + "&vote_average.gte=" + str(rating)
 
-    print ("Year Selection: " + year)
-    print ("Rating Selection: " + rating)
+    print ("Year Selection: " + str(year))
+    print ("Rating Selection: " + str(rating))
     print (url)
 
     # Fetch results for given URL
@@ -79,7 +83,7 @@ def results(page_num):
     if request.method == 'POST':
       
         # Render the page
-        return render_template('results.html', movies = movies, posterBasePath = getPosterBasePath(), poster_size = "w92", selectedYear=int(year), selectedRating=rating)
+        return render_template('results.html', movies = movies, posterBasePath = getPosterBasePath(), poster_size = "w92", selectedYear=year, selectedRating=rating)
 
     elif request.method == 'GET':
 

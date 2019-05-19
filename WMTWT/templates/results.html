@@ -4,9 +4,8 @@
 
 {{ selectedYear }} - {{ selectedRating }}
 
-<form name="pages" method="get" action="{{ url_for('results', page_num="4") }}">
-    <input type="submit" id="previous" name="previous" value="Previous" />
-    <input type="submit" id="next" name="next" value="Next" />
-</form>
-
+<!--<form name="pages" method="get" action="{{ url_for('results', page_num="4") }}">-->
+<input type="submit" id="previous" name="previous" value="Previous" />
+<input type="submit" id="next" name="next" value="Next" />
+<!--</form>-->
 {% endblock %}
