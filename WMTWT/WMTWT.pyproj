@@ -31,6 +31,9 @@
     <Compile Include="routes.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SQLAlchemy_Example.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="static\img\UnderConstruction.jpg" />
@@ -52,6 +55,7 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="db\" />
     <Folder Include="static\img\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />

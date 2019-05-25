@@ -1,11 +1,21 @@
 ﻿{% extends "base.html" %}
 
-{% block content %}
+{% block paginationInfo1 %}
 
-{{ selectedYear }} - {{ selectedRating }}
+<div id="paginationHeader">
+    Displaying page {{page}} of {{total_pages}} pages...
+    <input type="submit" id="previous" name="previous" class="previous" value="Previous" />
+    <input type="submit" id="next" name="next" class="next" value="Next" />
+</div>
 
-<!--<form name="pages" method="get" action="{{ url_for('results', page_num="4") }}">-->
-<input type="submit" id="previous" name="previous" value="Previous" />
-<input type="submit" id="next" name="next" value="Next" />
-<!--</form>-->
+{% endblock %}
+
+{% block paginationInfo2 %}
+
+<div id="paginationFooter">
+    Displaying page {{page}} of {{total_pages}} of XXXXXX pages...
+    <input type="submit" id="previous" name="previous" class="previous" value="Previous" />
+    <input type="submit" id="next" name="next" class="next" value="Next" />
+</div>
+
 {% endblock %}

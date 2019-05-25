@@ -117,14 +117,60 @@ body {
     border: 1px solid #409df9;
 }
 
+
 #main {
     background-color: #000000;
+    padding: 0px 20px 0px 0px;
     width: 700px;
     float: right;
 }
 
+#paginationHeader {
+    padding: 0px 0px 24px 0px;
+    text-align: right;
+}
+
+#paginationFooter {
+    padding: 20px 0px 20px 0px;
+    text-align: right;
+}
+
+.previous {
+    background-color: #409df9;
+    border: 2px solid #409df9;
+    width: 90px;
+    height: 20px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.previous:hover {
+    background-color: #badcff;
+    color: black;
+    border: 1px solid #409df9;
+}
+
+.next {
+    background-color: #409df9;
+    border: 2px solid #409df9;
+    width: 90px;
+    height: 20px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.next:hover {
+    background-color: #badcff;
+    color: black;
+    border: 1px solid #409df9;
+}
+
 .movie_title {
-    font: 14px 'Concert One', sans-serif;
+    font: 15px 'Concert One', sans-serif;
     color: #53d68c;
     font-weight: bold;
 }

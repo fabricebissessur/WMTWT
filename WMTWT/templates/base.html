@@ -17,17 +17,17 @@
             </form>
         </div>
         <div id="content">
-            <form action="{{ url_for('results', page_num="1") }}" method="POST">
-            <div id="verticalFilter">
-                <!--Note: jinja2 counter madness. We are using SET which is an assignment operator. Since you call set in the nested loop, the count in the nested loop is a different variable-->
-                <!--That's why we need the hacky solution below where the counter becomes an object instead of a simple variable -->
-                <h2>Refine... </h2>
-                {% set yearFrom = 1899 %}
-                {% set yearTo = 2019 %}
-                {% set count = {'value': yearTo} %}
-                {% set maxRating = 10 %}
-                {% set countRating = {'value': 10} %}
-                <!--<form action="{{ url_for('results', page_num="1") }}" method="POST"> -->
+            <form action="{{ url_for('results') }}" method="POST">
+                <div id="verticalFilter">
+                    <!--Note: jinja2 counter madness. We are using SET which is an assignment operator. Since you call set in the nested loop, the count in the nested loop is a different variable-->
+                    <!--That's why we need the hacky solution below where the counter becomes an object instead of a simple variable -->
+
+                    {% set yearFrom = 1899 %}
+                    {% set yearTo = 2019 %}
+                    {% set count = {'value': yearTo} %}
+                    {% set maxRating = 10 %}
+                    {% set countRating = {'value': 10} %}
+
                     <p>Year: </p>
                     <select class="years" name="years" id="years">
                         <option value="any" selected>Any</option>
@@ -38,55 +38,47 @@
                     </select>
                     <br>
                     <p>Rating: </p>
-                    <select class="rating" name="rating">
+                    <select class="rating" name="rating" id="rating">
                         <option value="any" selected>Any</option>
                         {% for x in range (0, maxRating) %}
-                        <option value="{{countRating.value}}" {% if countRating.value==selectedRating %} selected {% endif %}>{{countRating.value}} and above</option>
+                        <option value="{{countRating.value}}" {% if countRating.value==selectedRating %} selected {% endif %}>{{countRating.value}} {% if countRating.value<=9 %} and above{% endif %}</option>
                         {% if countRating.update({'value': (countRating.value - 1)}) %} {% endif %}
                         {% endfor %}
-                        <!--
-            <option value="10">10</option>
-            <option value="9">9 and above</option>
-            <option value="8">8 and above</option>
-            <option value="7">7 and above</option>
-            <option value="6">6 and above</option>
-            <option value="5">5 and above</option>
-            <option value="4">4 and above</option>
-            <option value="3">3 and above</option>
-            <option value="2">2 and above</option>
-            <option value="1">1 and above</option>
-            -->
                     </select>
                     <br>
                     <br>
                     <input type="submit" name="filter" value="Filter" class="submitButton" />
 
-                <!--</form>-->
-            </div>
+                </div>
 
-            <div id="main">
+                <div id="main">
 
-                {% block content %}
+                    {% block paginationInfo1 %}
 
-                {% endblock %}
+                    {% endblock %}
 
-                <table>
-                    {% for movie in movies %}
-                    <tr>
-                        <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
-                        <td class="movie_title">{{ movie.original_title }}</td>
-                        <td class="movie_rating" rowspan="3">{{ movie.vote_average }}</td>
-                        <td class="watched" rowspan="3">Watched?</td>
-                    </tr>
-                    <tr>
-                        <td class="movie_release_date">{{ movie.release_date }}</tdclass="movie_title">
-                    </tr>
-                    <tr>
-                        <td class="movie_overview">{{ movie.overview }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                    <table>
+                        {% for movie in movies %}
+                        <tr>
+                            <td rowspan="3"><img src={{ posterBasePath + poster_size + movie.poster_path }} alt="image" /></td>
+                            <td class="movie_title">{{ movie.original_title }}</td>
+                            <td class="movie_rating" rowspan="3">{{ movie.vote_average }}</td>
+                            <td class="watched" rowspan="3">Watched?</td>
+                        </tr>
+                        <tr>
+                            <td class="movie_release_date">{{ movie.release_date }}</tdclass="movie_title">
+                        </tr>
+                        <tr>
+                            <td class="movie_overview">{{ movie.overview }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    {% block paginationInfo2 %}
+
+                    {% endblock %}
+
+                </div>
             </form>
 
             <div id="footer">
