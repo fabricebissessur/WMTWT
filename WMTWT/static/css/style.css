@@ -1,8 +1,10 @@
-body {
+html, body {
     background-color: #bababa;
     font-family: Helvetica, Arial, sans-serif;
     color: #bababa;
     font-size: 10px;
+    margin: 0px;
+    padding: 0px;
 }
 
 #container {
@@ -10,12 +12,15 @@ body {
     width: 900px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0px;
 }
 
 #header {
     background-color: #fc2d2d;
     color: #ffffff;
     font-size: 36px;
+    padding: 0px;
+    margin: 0px;
 }
 
 #horizontalFilters {

@@ -42,6 +42,9 @@
     <Content Include="templates\index.html" />
     <Content Include="static\css\style.css" />
     <Content Include="templates\results.html" />
+    <None Include="WMTWT - Web Deploy.pubxml">
+      <Publish>False</Publish>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
