@@ -4,7 +4,7 @@ from app import app
 # requests being the package to retrieve API requests responses
 import requests
 
-# Adding a dummy comment to test Commit
+# Adding a dummy comment to test Commit 2
 
 #Global variables
 apiKey = "89bf4a8b688cd3ae5e0932562b79234d"
